@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "image": "assets/icons/icon-burger.png",
+        "name": "Fish",
+        "price": 15000,
+        "category": "Main",
+        "quantity": 5
+    },
+    {
+        "id": 2,
+        "image": "assets/icons/icon-desserts.png",
+        "name": "Shrimp",
+        "price": 30000,
+        "category": "Main",
+        "quantity": 4
+    },
+    {
+        "id": 3,
+        "image": "assets/icons/icon-burger.png",
+        "name": "Cake",
+        "price": 30000,
+        "category": "Side",
+        "quantity": 33
+    },
+    {
+        "id": 4,
+        "image": "assets/icons/icon-burger.png",
+        "name": "Tea",
+        "price": 50000,
+        "category": "Drink",
+        "quantity": 1
+    },
+    {
+        "id": 5,
+        "image": "assets/icons/icon-burger.png",
+        "name": "Fruit",
+        "price": 25000,
+        "category": "Side",
+        "quantity": 5
+    },
+    {
+        "id": 6,
+        "image": "assets/icons/icon-burger.png",
+        "name": "Ice Cream",
+        "price": 50000,
+        "category": "Side",
+        "quantity": 5
+    },
+    {
+        "id": 7,
+        "image": "assets/icons/icon-burger.png",
+        "name": "Steak",
+        "price": 100000,
+        "category": "Main",
+        "quantity": 9
+    },
+    {
+        "id": 8,
+        "image": "assets/icons/icon-burger.png",
+        "name": "Coffe",
+        "price": 15000,
+        "category": "Drink",
+        "quantity": 5
+    },
+    {
+        "id": 9,
+        "image": "assets/icons/icon-burger.png",
+        "name": "Volka",
+        "price": 150000,
+        "category": "Wine",
+        "quantity": 5
+    },
+    {
+        "id": 10,
+        "image": "assets/icons/icon-burger.png",
+        "name": "Tequila",
+        "price": 80000,
+        "category": "Wine",
+        "quantity": 5
+    }
+]
