@@ -28,6 +28,8 @@ class NumPadModel extends GetxController {
   void updateNewValue(){
     count_t.value = 0;
     count_s.value = 0;
+    tableString.value = '';
+    seatString.value = '';
     update();
   }
 }

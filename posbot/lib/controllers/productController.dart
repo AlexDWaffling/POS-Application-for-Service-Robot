@@ -17,7 +17,9 @@ class ProductsController extends GetxController {
   late AppDatabase appDatabase;
   RxList<ProductItem> products = RxList<ProductItem>([]);
   RxList<ProductItem> orderItems = <ProductItem>[].obs;
+  RxInt dismissed_count = 0.obs;
   RxDouble sumPrice = 0.0.obs;
+  RxDouble subPrice = 0.0.obs;
 
   var formatter = NumberFormat('#,###,##0');
 
@@ -40,10 +42,21 @@ class ProductsController extends GetxController {
     // TODO: implement onReady
     super.onReady();
   }
+  ProductItem removeCount(RxInt count, ProductItem item){
+     item.count -= count.toInt();
+     return item;
+  }
+
   void summaryItemPrice(double item){
       sumPrice.value += item;
     logger.i({"Summary": sumPrice});
   }
+
+  void subItemPrice(double item){
+      sumPrice.value -= item;
+    logger.i({"Final": sumPrice});
+  }
+  
   void addItemOrder(ProductItem item) {
     if (_checkOrderItem(item)) {
       for (var i in orderItems) {

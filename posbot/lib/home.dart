@@ -112,7 +112,8 @@ class _HomePageState extends State<HomePage> {
           flex: 5,
           child: Column(
             children: [
-              Obx(() => topTitle(
+              Obx(
+                () => topTitle(
                   title: 'Order',
                   subTitle: 'Table: ${_table.table_number}',
                   sideTitle: 'Seats: ${_numpad.count_s}',
@@ -130,125 +131,152 @@ class _HomePageState extends State<HomePage> {
                         logger.i({"Count ": item.count});
                       }
                       return itemOrder(
-                          image: order.image,
-                          title: order.name,
-                          price:
-                              '${_productsController.formatter.format((order.price * order.count).toInt())} VND',
-                          qty: order.count.toString());
+                        image: order.image,
+                        title: order.name,
+                        price:
+                            '${_productsController.formatter.format((order.price * order.count).toInt())} VND',
+                        qty: order.count.toString(),
+                        dismiss: () {
+                          setState(() {
+                            _productsController.orderItems.removeAt(index);
+                            _productsController.subItemPrice(order.price * order.count);
+                          });
+                        },
+                        counter_plus: (context){
+                          setState(() {
+                            order.count += 1;
+                            _productsController.summaryItemPrice(order.price);
+                          });
+                        },
+                        counter_minus: (context){
+                          setState(() {
+                            order.count -= 1;
+                            if(order.count == 0){
+                              _productsController.orderItems.removeAt(index);
+                            }
+                            _productsController.subItemPrice(order.price);
+                          });
+                        },
+                      );
                     }),
               )),
               Expanded(
                 child: Container(
-                    padding: const EdgeInsets.all(20),
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(14),
-                      color: const Color(0xff1f2029),
-                    ),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              'Sub Total (VND)',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Obx(() => Text(
-                                _productsController.formatter.format(producsController.sumPrice.toDouble()),
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text(
-                              'Tax (VAT)',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Text(
-                              '8%',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text(
-                              'Voucher',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Text(
-                              '0%',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(vertical: 20),
-                          height: 2,
-                          width: double.infinity,
-                          color: Colors.white,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              'Total',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Obx(() => Text(
-                                _productsController.formatter.format((producsController.sumPrice.toDouble())+(producsController.sumPrice.toDouble()*0.1)),
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 30),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            onPrimary: Colors.white,
-                            primary: Colors.deepOrange,
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(Icons.print, size: 16),
-                              SizedBox(width: 6),
-                              Text('Print Bills')
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                  padding: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    color: const Color(0xff1f2029),
                   ),
-                
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Sub Total (VND)',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                          Obx(
+                            () => Text(
+                              _productsController.formatter.format(
+                                  producsController.sumPrice.toDouble()),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            'Tax (VAT)',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                          Text(
+                            '8%',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            'Voucher',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                          Text(
+                            '0%',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(vertical: 20),
+                        height: 2,
+                        width: double.infinity,
+                        color: Colors.white,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Total',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                          Obx(
+                            () => Text(
+                              _productsController.formatter.format(
+                                  (producsController.sumPrice.toDouble()) +
+                                      (producsController.sumPrice.toDouble() *
+                                          0.1)),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 30),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.deepOrange,
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(Icons.print, size: 16),
+                            SizedBox(width: 6),
+                            Text('Print Bills')
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
