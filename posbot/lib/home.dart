@@ -142,13 +142,13 @@ class _HomePageState extends State<HomePage> {
                             _productsController.subItemPrice(order.price * order.count);
                           });
                         },
-                        counter_plus: (context){
+                        counter_plus: (){
                           setState(() {
                             order.count += 1;
                             _productsController.summaryItemPrice(order.price);
                           });
                         },
-                        counter_minus: (context){
+                        counter_minus: (){
                           setState(() {
                             order.count -= 1;
                             if(order.count == 0){

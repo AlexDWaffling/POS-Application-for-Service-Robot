@@ -15,15 +15,15 @@ class itemOrder extends StatelessWidget {
   final dismiss;
   final counter_plus;
   final counter_minus;
-  itemOrder(
-      {required this.image,
-      required this.title,
-      required this.qty,
-      required this.price,
-      this.dismiss,
-      this.counter_plus,
-      this.counter_minus,
-      });
+  itemOrder({
+    required this.image,
+    required this.title,
+    required this.qty,
+    required this.price,
+    this.dismiss,
+    this.counter_plus,
+    this.counter_minus,
+  });
 
   final ProductsController _productsController = Get.put(ProductsController());
 
@@ -33,33 +33,33 @@ class itemOrder extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 10),
       child: Slidable(
         key: UniqueKey(),
-        startActionPane: ActionPane(
-          motion: const ScrollMotion(),
-          extentRatio: 0.5,
-          children: [
-            SlidableAction(
-              backgroundColor: Colors.green,
-              borderRadius: BorderRadius.circular(12),
-              icon: Icons.add,
-              onPressed: counter_plus
-              // (context){
-                
-              // },
-            ),
-            SlidableAction(
-              backgroundColor: Colors.blue,
-              borderRadius: BorderRadius.circular(12),
-              icon: Icons.remove,
-              onPressed: counter_minus
-              // (context){
-                // setState(() {
-                //   _productsController.dismissed_count.value++;
-                //   logger.i("count:", _productsController.dismissed_count);
-                // });
-              // },
-            ),
-          ],
-        ),
+        // startActionPane: ActionPane(
+        //   motion: const ScrollMotion(),
+        //   extentRatio: 0.5,
+        //   children: [
+        //     SlidableAction(
+        //       backgroundColor: Colors.green,
+        //       borderRadius: BorderRadius.circular(12),
+        //       icon: Icons.add,
+        //       onPressed: counter_plus
+        //       // (context){
+
+        //       // },
+        //     ),
+        //     SlidableAction(
+        //       backgroundColor: Colors.blue,
+        //       borderRadius: BorderRadius.circular(12),
+        //       icon: Icons.remove,
+        //       onPressed: counter_minus
+        //       // (context){
+        //         // setState(() {
+        //         //   _productsController.dismissed_count.value++;
+        //         //   logger.i("count:", _productsController.dismissed_count);
+        //         // });
+        //       // },
+        //     ),
+        //   ],
+        // ),
         endActionPane: ActionPane(
           motion: const ScrollMotion(),
           extentRatio: 0.35,
@@ -119,13 +119,35 @@ class itemOrder extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(
-                'x $qty',
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+              const SizedBox(width: 30),
+              InkWell(
+                onTap: counter_minus,
+                child: const Icon(Icons.remove, color: Colors.white, size: 16),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 25,
+                  width: 25,
+                  decoration: const BoxDecoration(
+                    color: Colors.deepOrangeAccent,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: Text(
+                      'x $qty',
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
+              ),
+              InkWell(
+                onTap: counter_plus,
+                child: const Icon(Icons.add, color: Colors.white, size: 16),
               ),
             ],
           ),

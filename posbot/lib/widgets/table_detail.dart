@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:dots_picker/dots_picker.dart';
 
 import '../models/model_numpad.dart';
 
