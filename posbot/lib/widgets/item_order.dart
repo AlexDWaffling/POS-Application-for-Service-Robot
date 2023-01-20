@@ -70,7 +70,7 @@ class itemOrder extends StatelessWidget {
               backgroundColor: Colors.red,
               borderRadius: BorderRadius.circular(12),
               icon: Icons.delete,
-              onPressed: (context) {},
+              onPressed: (context){}
             ),
           ],
         ),

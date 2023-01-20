@@ -6,19 +6,21 @@ import '../models/model_numpad.dart';
 class tableDetail extends StatefulWidget {
   final String name;
   final tap;
-  tableDetail({super.key, required this.name, this.tap});
+  final click;
+  tableDetail({super.key, required this.name, this.tap, this.click});
 
   @override
   State<tableDetail> createState() => _tableDetailState();
 }
 
 class _tableDetailState extends State<tableDetail> {
-  var _color = Colors.red;
+  var _color = Colors.green;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onDoubleTap: widget.tap,
+      onTap: widget.click,
       child: Container(
         // height: 30,
         // width: 30,
