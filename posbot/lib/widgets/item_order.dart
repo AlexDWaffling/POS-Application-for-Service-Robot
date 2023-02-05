@@ -79,7 +79,9 @@ class itemOrder extends StatelessWidget {
           // margin: const EdgeInsets.only(bottom: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
-            color: const Color(0xff1f2029),
+            border: Border.all(width: 1.0, color: Color.fromRGBO(226, 224, 224, 1)),
+            color: Color.fromRGBO(255, 255, 255, 1)
+            // color: const Color(0xff1f2029),
           ),
           child: Row(
             children: [
@@ -104,7 +106,7 @@ class itemOrder extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Color.fromRGBO(18, 19, 25, 1),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -113,7 +115,7 @@ class itemOrder extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Color.fromRGBO(18, 19, 25, 1),
                       ),
                     )
                   ],
@@ -122,7 +124,7 @@ class itemOrder extends StatelessWidget {
               const SizedBox(width: 30),
               InkWell(
                 onTap: counter_minus,
-                child: const Icon(Icons.remove, color: Colors.white, size: 16),
+                child: const Icon(Icons.remove, color: Color.fromRGBO(18, 19, 25, 1), size: 16),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -139,7 +141,7 @@ class itemOrder extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Color.fromRGBO(18, 19, 25, 1),
                       ),
                     ),
                   ),
@@ -147,7 +149,7 @@ class itemOrder extends StatelessWidget {
               ),
               InkWell(
                 onTap: counter_plus,
-                child: const Icon(Icons.add, color: Colors.white, size: 16),
+                child: const Icon(Icons.add, color: Color.fromRGBO(18, 19, 25, 1), size: 16),
               ),
             ],
           ),

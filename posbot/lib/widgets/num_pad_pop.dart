@@ -46,6 +46,7 @@ class _NumPadScreenState extends State<NumPadScreen> {
     return Dialog(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        backgroundColor: Color.fromRGBO(249, 249, 249, 1),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,
@@ -91,7 +92,7 @@ class _NumPadScreenState extends State<NumPadScreen> {
                         name:
                             'Table: ${_table.table_number | _numpad.count_t.toInt()}',
                         color:
-                            (selected != 1) ? Colors.green : Colors.deepOrange,
+                            (selected != 1) ? Color.fromRGBO(225, 225, 225, 1) : Color.fromRGBO(195, 195, 195, 1),
                         index: 1,
                         tap: () {
                           _flag = 'table';
@@ -105,7 +106,7 @@ class _NumPadScreenState extends State<NumPadScreen> {
                     const SizedBox(width: 6),
                     NumPadBox(
                       name: 'Seat: ${_numpad.count_s}',
-                      color: (selected != 2) ? Colors.green : Colors.deepOrange,
+                      color: (selected != 2) ? Color.fromRGBO(225, 225, 225, 1) : Color.fromRGBO(195, 195, 195, 1),
                       index: 2,
                       tap: () {
                         _flag = 'seat';

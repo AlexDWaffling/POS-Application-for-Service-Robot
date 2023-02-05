@@ -9,7 +9,7 @@ class logoBar extends StatelessWidget{
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.deepOrangeAccent,
+              color: Color.fromRGBO(18, 19, 25, 1),
             ),
             child: const Icon(
               Icons.fastfood,
@@ -21,7 +21,7 @@ class logoBar extends StatelessWidget{
           const Text(
             'POSBOT',
             style: TextStyle(
-              color: Colors.white,
+              color: Color.fromRGBO(18, 19, 25, 1),
               fontSize: 8,
               fontWeight: FontWeight.bold,
             ),

@@ -1,13 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:posbot/payment.dart';
 import 'package:posbot/widgets/num_pad.dart';
 
 import 'package:provider/provider.dart';
 import 'package:get/get.dart';
-
+import 'package:window_manager/window_manager.dart';
 
 import 'database/database.dart';
 import 'entity/order.dart';
+import 'history.dart';
 import 'home.dart';
+import 'table.dart';
 import 'models/model_bar.dart';
 import 'models/model_tab.dart';
 import 'widgets/item_bar.dart';
@@ -21,21 +26,23 @@ Future<void> main() async {
   //   return instance;
   // }
   await Get.putAsync<AppDatabase>(() async {
-    final instance = await $FloorAppDatabase
-        .databaseBuilder('app_database.db')
-        .build();
+    final instance =
+        await $FloorAppDatabase.databaseBuilder('app_database.db').build();
     return instance;
   });
-
-  //  ProducsController();
-  // initServices();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await windowManager.ensureInitialized();
+  // if (Platform.isLinux) {
+  //   WindowManager.instance.setMinimumSize(const Size(1024, 600));
+  //   WindowManager.instance.setMaximumSize(const Size(1024, 600));
+  // }
   runApp(const MyApp());
   final List<OrderItem> list = [];
 }
 
 // initServices() async {
 //   WidgetsFlutterBinding.ensureInitialized();
-  
+
 //   await Get.putAsync<AppDatabase>(() => AppDatabase.init());
 // }
 
@@ -71,12 +78,12 @@ class _MainPageState extends State<MainPage> {
     switch (pageActive) {
       case 'Home':
         return const HomePage();
-      case 'Menu':
-        return Container();
+      case 'Table':
+        return const TablePage();
+      case 'Payment':
+        return const PaymentPage();
       case 'History':
-        return Container();
-      case 'Promos':
-        return Container();
+        return const HistoryPage();
       case 'Settings':
         return Container();
 
@@ -94,7 +101,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[700],
+      backgroundColor: Color.fromARGB(240, 240, 240, 240),
       body: Row(
         children: [
           Container(
@@ -124,11 +131,13 @@ class _MainPageState extends State<MainPage> {
             child: Container(
               margin: const EdgeInsets.only(top: 24, right: 12),
               padding: const EdgeInsets.only(top: 12, right: 12, left: 12),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(12),
                     topRight: Radius.circular(12)),
-                color: Color(0xff17181f),
+                border: Border.all(
+                    width: 1.0, color: Color.fromRGBO(226, 224, 224, 1)),
+                color: Color.fromRGBO(249, 249, 249, 1),
               ),
               child: _pageView(),
             ),

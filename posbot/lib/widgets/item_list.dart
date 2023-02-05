@@ -21,7 +21,8 @@ class itemList extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
-          color: const Color(0xff1f2029),
+          border: Border.all(width: 1.0, color: Color.fromRGBO(226, 224, 224, 1)),
+          color: Color.fromRGBO(255, 255, 255, 1),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,6 +31,7 @@ class itemList extends StatelessWidget {
               height: 130,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
+                // border: Border.all(width: 1.0, color: Color.fromRGBO(226, 224, 224, 1)),
                 image: DecorationImage(
                   image: AssetImage(image),
                   fit: BoxFit.cover,
@@ -40,7 +42,7 @@ class itemList extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                color: Colors.white,
+                color: Color.fromARGB(255, 18, 19, 25),
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
               ),
@@ -59,7 +61,7 @@ class itemList extends StatelessWidget {
                 Text(
                   quantity.toString(),
                   style: const TextStyle(
-                    color: Colors.white60,
+                    color: Color.fromARGB(255, 18, 19, 25),
                     fontSize: 12,
                   ),
                 ),

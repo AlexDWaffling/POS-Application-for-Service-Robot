@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>760347742156-pbcp4jnl0kqkkd07q8jdet2l4d9d4f4g.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.760347742156-pbcp4jnl0kqkkd07q8jdet2l4d9d4f4g</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDMt5X9q3e2i7fEYP2oU3WTVK0_Woec7Pk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>760347742156</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.posbot</string>
+	<key>PROJECT_ID</key>
+	<string>pos-app-for-service-robot</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pos-app-for-service-robot.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:760347742156:ios:6771be023976d5ea725769</string>
+	<key>DATABASE_URL</key>
+	<string>https://pos-app-for-service-robot-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>

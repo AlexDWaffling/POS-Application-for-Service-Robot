@@ -33,7 +33,7 @@ class NumPadBox extends StatelessWidget {
             Text(
               name,
               style: const TextStyle(
-                color: Colors.white,
+                color: Color.fromRGBO(18, 19, 25, 1),
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),

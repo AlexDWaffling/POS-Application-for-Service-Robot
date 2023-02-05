@@ -29,7 +29,7 @@ class topTitle extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                color: Colors.white,
+                color: Color.fromARGB(255, 18, 19, 25),
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -49,7 +49,7 @@ class topTitle extends StatelessWidget {
                   Text(
                     subTitle,
                     style: const TextStyle(
-                      color: Colors.white54,
+                      color: Color.fromARGB(255, 18, 19, 25),
                       fontSize: 10,
                     ),
                   ),
@@ -57,7 +57,7 @@ class topTitle extends StatelessWidget {
                   Text(
                     sideTitle,
                     style: const TextStyle(
-                      color: Colors.white54,
+                      color: Color.fromARGB(255, 18, 19, 25),
                       fontSize: 10,
                     ),
                   ),

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "760347742156",
+    "firebase_url": "https://pos-app-for-service-robot-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "pos-app-for-service-robot",
+    "storage_bucket": "pos-app-for-service-robot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760347742156:android:eeb05b3189940eee725769",
+        "android_client_info": {
+          "package_name": "com.example.posbot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760347742156-6hv2pa2abkt9n2bpjr8bn93o2go16u0m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6ODz3MdWkv_F_5i9t3aS2FTMx8Ew1J0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760347742156-6hv2pa2abkt9n2bpjr8bn93o2go16u0m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

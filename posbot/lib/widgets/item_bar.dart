@@ -32,12 +32,12 @@ class itemBar extends StatelessWidget{
                 children: [
                   Icon(
                     icon,
-                    color: Colors.white,
+                    color: Color(0xFF2D2B2B),
                   ),
                   const SizedBox(height: 5),
                   Text(
                     menu,
-                    style: const TextStyle(color: Colors.white, fontSize: 10),
+                    style: const TextStyle(color: Color(0xFF2D2B2B), fontSize: 10),
                   ),
                 ],
               ),

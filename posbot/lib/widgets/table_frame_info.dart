@@ -30,7 +30,7 @@ class tableFrameInfo extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.normal,
                     fontSize: 14,
-                    color: Colors.white),
+                    color: Color.fromRGBO(18, 19, 25, 1)),
               ),
               Container(
                   height: 20,

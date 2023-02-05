@@ -17,9 +17,12 @@ import 'page/side_dish.dart';
 import 'page/wine.dart';
 
 import 'widgets/item_order.dart';
+import 'widgets/item_order_state.dart';
 import 'widgets/item_tab.dart';
+import 'widgets/payment_dropdown.dart';
 import 'widgets/search_bar.dart';
 import 'widgets/top_title.dart';
+import 'widgets/top_title_restaurant.dart';
 
 class HomePage extends StatefulWidget {
   // List<ProductItem> cItem = [];
@@ -36,6 +39,8 @@ class _HomePageState extends State<HomePage> {
   // final OrderController _orderController = Get.put(OrderController());
   List<ProductItem> cItem = [];
   double totalPrice = 0.0;
+  String payment_ = '';
+  var payment_method = ['Cast', 'Momo', 'VNPay'];
   // _HomePageState(this.cItem);
   void collectItem(ProductItem _productItem) {
     setState(() {
@@ -79,11 +84,17 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               // ignore: prefer_const_constructors
-              topTitle(
-                title: 'Lorem Restourant',
-                subTitle: '20 October 2022',
-                sideTitle: '',
-                action: const searchBar(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: topTitleRes(
+                        title: 'Demo Restaurant', subTitle: '20 October 2022'),
+                  ),
+                  // const SizedBox(width: 20),
+                  searchBar()
+                ],
               ),
               Container(
                   height: 100,
@@ -107,7 +118,13 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        Expanded(flex: 1, child: Container()),
+        // Expanded(flex: 1, child: Container()),
+        Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 80),
+            width: 1,
+            height: double.infinity,
+            color: Color.fromRGBO(226, 224, 224, 1),
+          ),
         Expanded(
           flex: 5,
           child: Column(
@@ -121,52 +138,16 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 20),
-              Expanded(
-                  child: Obx(
-                () => ListView.builder(
-                    itemCount: _productsController.orderItems.length,
-                    itemBuilder: (context, index) {
-                      ProductItem order = _productsController.orderItems[index];
-                      for (var item in _productsController.orderItems) {
-                        logger.i({"Count ": item.count});
-                      }
-                      return itemOrder(
-                        image: order.image,
-                        title: order.name,
-                        price:
-                            '${_productsController.formatter.format((order.price * order.count).toInt())} VND',
-                        qty: order.count.toString(),
-                        dismiss: () {
-                          setState(() {
-                            _productsController.orderItems.removeAt(index);
-                            _productsController.subItemPrice(order.price * order.count);
-                          });
-                        },
-                        counter_plus: (){
-                          setState(() {
-                            order.count += 1;
-                            _productsController.summaryItemPrice(order.price);
-                          });
-                        },
-                        counter_minus: (){
-                          setState(() {
-                            order.count -= 1;
-                            if(order.count == 0){
-                              _productsController.orderItems.removeAt(index);
-                            }
-                            _productsController.subItemPrice(order.price);
-                          });
-                        },
-                      );
-                    }),
-              )),
+              Expanded(child: itemOrderS()),
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.all(20),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(14),
-                    color: const Color(0xff1f2029),
+                    border: Border.all(
+                        width: 1.0, color: Color.fromRGBO(226, 224, 224, 1)),
+                    color: Color.fromRGBO(255, 255, 255, 1),
                   ),
                   child: Column(
                     children: [
@@ -177,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                             'Sub Total (VND)',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                                color: Color.fromRGBO(18, 19, 25, 1)),
                           ),
                           Obx(
                             () => Text(
@@ -185,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                                   producsController.sumPrice.toDouble()),
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                                  color: Color.fromRGBO(18, 19, 25, 1)),
                             ),
                           ),
                         ],
@@ -198,13 +179,13 @@ class _HomePageState extends State<HomePage> {
                             'Tax (VAT)',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                                color: Color.fromRGBO(18, 19, 25, 1)),
                           ),
                           Text(
                             '8%',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                                color: Color.fromRGBO(18, 19, 25, 1)),
                           ),
                         ],
                       ),
@@ -216,21 +197,33 @@ class _HomePageState extends State<HomePage> {
                             'Voucher',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                                color: Color.fromRGBO(18, 19, 25, 1)),
                           ),
                           Text(
                             '0%',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                                color: Color.fromRGBO(18, 19, 25, 1)),
                           ),
                         ],
                       ),
                       Container(
-                        margin: const EdgeInsets.symmetric(vertical: 20),
+                        margin: const EdgeInsets.symmetric(vertical: 8.0),
                         height: 2,
                         width: double.infinity,
-                        color: Colors.white,
+                        color: Color.fromRGBO(18, 19, 25, 1),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Payment',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(18, 19, 25, 1)),
+                          ),
+                          DropdownButtonPayment()
+                        ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -239,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                             'Total',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                                color: Color.fromRGBO(18, 19, 25, 1)),
                           ),
                           Obx(
                             () => Text(
@@ -249,30 +242,60 @@ class _HomePageState extends State<HomePage> {
                                           0.1)),
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                                  color: Color.fromRGBO(18, 19, 25, 1)),
                             ),
                           ),
                         ],
                       ),
                       const SizedBox(height: 30),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          onPrimary: Colors.white,
-                          primary: Colors.deepOrange,
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                onPrimary: Colors.white,
+                                primary: Colors.deepOrange,
+                                padding: const EdgeInsets.symmetric(vertical: 8),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              onPressed: () {},
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  Icon(Icons.print, size: 16),
+                                  SizedBox(width: 6),
+                                  Text('Print Bills')
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
-                        onPressed: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(Icons.print, size: 16),
-                            SizedBox(width: 6),
-                            Text('Print Bills')
-                          ],
-                        ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                onPrimary: Colors.white,
+                                primary: Colors.green,
+                                padding: const EdgeInsets.symmetric(vertical: 8),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              onPressed: () {},
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  Icon(Icons.payment, size: 16),
+                                  SizedBox(width: 6),
+                                  Text('Discharge')
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

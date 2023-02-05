@@ -20,10 +20,10 @@ class itemTab extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: const Color(0xff1f2029),
+          color: Color.fromRGBO(255, 255, 255, 1),
           border: isActive
               ? Border.all(color: Colors.deepOrangeAccent, width: 3)
-              : Border.all(color: const Color(0xff1f2029), width: 3),
+              : Border.all(width: 1.0, color: Color.fromRGBO(226, 224, 224, 1)),
         ),
         child: Row(
           children: [
@@ -37,7 +37,7 @@ class itemTab extends StatelessWidget {
               title,
               style: const TextStyle(
                 fontSize: 11,
-                color: Colors.white,
+                color: Color.fromRGBO(18, 19, 25, 1),
                 fontWeight: FontWeight.bold,
               ),
             )

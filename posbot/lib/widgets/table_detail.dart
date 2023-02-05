@@ -14,7 +14,7 @@ class tableDetail extends StatefulWidget {
 }
 
 class _tableDetailState extends State<tableDetail> {
-  var _color = Colors.green;
+  var _color = Color.fromRGBO(255, 255, 255, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,14 @@ class _tableDetailState extends State<tableDetail> {
         decoration: BoxDecoration(
             color: _color,
             // shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            border: Border.all(width: 1.0, color: Colors.green),
+            ),
         child: Center(
           child: Text(
             widget.name,
             style: const TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
+                fontWeight: FontWeight.bold, fontSize: 20, color: Color.fromRGBO(18, 19, 25, 1)),
           ),
         ),
       ),
